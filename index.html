@@ -528,7 +528,7 @@
     </div>
 
     <script>
-        const basePath = 'C:\\Users\\gui19\\Desktop\\OneDrive_1_16-06-2025\\';
+        const basePath = './documentos/';
         
         function toggleCategory(categoryId) {
             const category = document.getElementById(categoryId);
@@ -537,15 +537,16 @@
 
         function viewDocument(filename) {
             const fullPath = basePath + filename;
-            // No ambiente web, tentamos abrir o arquivo
-            window.open('file:///' + fullPath.replace(/\\/g, '/'), '_blank');
+            // Abre o arquivo PDF em uma nova aba
+            window.open(fullPath, '_blank');
         }
 
         function downloadDocument(filename) {
             const fullPath = basePath + filename;
             const link = document.createElement('a');
-            link.href = 'file:///' + fullPath.replace(/\\/g, '/');
+            link.href = fullPath;
             link.download = filename;
+            link.target = '_blank';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
