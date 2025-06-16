@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos de Documentos Jurídicos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #4a9b8e 0%, #2d7b6e 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            border-color: #4a9b8e;
+        }
+
+        .category {
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #4a9b8e, #2d7b6e);
+            color: white;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .category-header:hover {
+            background: linear-gradient(135deg, #3d8a7a, #256b5c);
+        }
+
+        .category-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .category.collapsed .category-toggle {
+            transform: rotate(180deg);
+        }
+
+        .document-list {
+            padding: 0;
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .category.collapsed .document-list {
+            max-height: 0;
+        }
+
+        .document-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .document-item:last-child {
+            border-bottom: none;
+        }
+
+        .document-item:hover {
+            background-color: #f8f9ff;
+        }
+
+        .document-name {
+            font-weight: 500;
+            color: #2c3e50;
+            flex-grow: 1;
+            margin-right: 20px;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #4a9b8e, #2d7b6e);
+            color: white;
+        }
+
+        .btn-download:hover {
+            background: linear-gradient(135deg, #3d8a7a, #256b5c);
+            transform: translateY(-2px);
+        }
+
+        .btn-view {
+            background: linear-gradient(135deg, #5fb3a3, #4a9b8e);
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: linear-gradient(135deg, #52a394, #3d8a7a);
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-item {
+            display: inline-block;
+            margin: 0 20px;
+            color: #2c3e50;
+        }
+
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4a9b8e;
+            display: block;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .document-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .document-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .stats-item {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Modelos de Documentos Jurídicos</h1>
+            <p>Acesse e baixe modelos de documentos para questões jurídicas familiares. Todos os documentos estão organizados por categoria para facilitar sua busca.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stats-item">
+                <span class="stats-number" id="total-docs">27</span>
+                <span>Total de Documentos</span>
+            </div>
+            <div class="stats-item">
+                <span class="stats-number" id="visible-docs">27</span>
+                <span>Documentos Visíveis</span>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Buscar documentos...">
+        </div>
+
+        <div class="category" id="cat-alimentos">
+            <div class="category-header" onclick="toggleCategory('cat-alimentos')">
+                <span>💰 Alimentos</span>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="document-list">
+                <div class="document-item" data-name="alimentos menor">
+                    <span class="document-name">ALIMENTOS MENOR.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('ALIMENTOS MENOR.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ALIMENTOS MENOR.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="alimentos avoengos">
+                    <span class="document-name">ALIMENTOS_AVOENGOS.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('ALIMENTOS_AVOENGOS.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ALIMENTOS_AVOENGOS.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="alimentos gravídicos">
+                    <span class="document-name">ALIMENTOS_GRAVÍDICOS.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('ALIMENTOS_GRAVÍDICOS.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ALIMENTOS_GRAVÍDICOS.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="execução alimentos">
+                    <span class="document-name">EXECUÇÃO_DE_ALIMENTOS.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('EXECUÇÃO_DE_ALIMENTOS.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('EXECUÇÃO_DE_ALIMENTOS.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="exoneração alimentos">
+                    <span class="document-name">EXONERAÇÃO_DE_ALIMENTOS.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('EXONERAÇÃO_DE_ALIMENTOS.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('EXONERAÇÃO_DE_ALIMENTOS.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="oferta alimentos visitas">
+                    <span class="document-name">OFERTA_DE_ALIMENTOS_COM_REGULAMENTAÇÃO_DE_VISITAS.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('OFERTA_DE_ALIMENTOS_COM_REGULAMENTAÇÃO_DE_VISITAS.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('OFERTA_DE_ALIMENTOS_COM_REGULAMENTAÇÃO_DE_VISITAS.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="revisional alimentos diminuir">
+                    <span class="document-name">Ação Revisonal de Alimentos - Diminuir.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Ação Revisonal de Alimentos - Diminuir.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Ação Revisonal de Alimentos - Diminuir.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="revisional alimentos aumento">
+                    <span class="document-name">REVISIONAL_DE_ALIMENTOS_-_AUMENTO.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('REVISIONAL_DE_ALIMENTOS_-_AUMENTO.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('REVISIONAL_DE_ALIMENTOS_-_AUMENTO.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="kit alimentos maior">
+                    <span class="document-name">Kit Alimentos Maior.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Kit Alimentos Maior.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Kit Alimentos Maior.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="cat-divorcio">
+            <div class="category-header" onclick="toggleCategory('cat-divorcio')">
+                <span>⚖️ Divórcio e Separação</span>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="document-list">
+                <div class="document-item" data-name="divórcio consensual">
+                    <span class="document-name">Divórcio Consensual..pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Divórcio Consensual..pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Divórcio Consensual..pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="divórcio litigioso">
+                    <span class="document-name">Divórcio Litigioso 1.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Divórcio Litigioso 1.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Divórcio Litigioso 1.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="conversão separação consensual">
+                    <span class="document-name">Conversão de Separação Judicial em Divórcio Consensual.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Conversão de Separação Judicial em Divórcio Consensual.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Conversão de Separação Judicial em Divórcio Consensual.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="conversão separação litigioso">
+                    <span class="document-name">Conversão de Separação Judicial em Divórcio Litigioso.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Conversão de Separação Judicial em Divórcio Litigioso.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Conversão de Separação Judicial em Divórcio Litigioso.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="cat-paternidade">
+            <div class="category-header" onclick="toggleCategory('cat-paternidade')">
+                <span>👨‍👧‍👦 Paternidade</span>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="document-list">
+                <div class="document-item" data-name="investigação paternidade">
+                    <span class="document-name">Ação de Investigação de Paternidade.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Ação de Investigação de Paternidade.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Ação de Investigação de Paternidade.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="investigação paternidade menor">
+                    <span class="document-name">INVESTIGAÇÃO_DE_PATERNIDADE_ MENOR.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('INVESTIGAÇÃO_DE_PATERNIDADE_ MENOR.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('INVESTIGAÇÃO_DE_PATERNIDADE_ MENOR.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="investigação paternidade maior">
+                    <span class="document-name">INVESTIGAÇÃO_DE_PATERNIDADE_-_MAIOR.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('INVESTIGAÇÃO_DE_PATERNIDADE_-_MAIOR.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('INVESTIGAÇÃO_DE_PATERNIDADE_-_MAIOR.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="negatória paternidade">
+                    <span class="document-name">NEGATORIA_DE_PATERNIDADE.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('NEGATORIA_DE_PATERNIDADE.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('NEGATORIA_DE_PATERNIDADE.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="cat-guarda">
+            <div class="category-header" onclick="toggleCategory('cat-guarda')">
+                <span>👶 Guarda e Adoção</span>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="document-list">
+                <div class="document-item" data-name="adoção maior">
+                    <span class="document-name">ADOÇÃO_MAIOR.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('ADOÇÃO_MAIOR.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ADOÇÃO_MAIOR.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="ação guarda">
+                    <span class="document-name">Ação de Guarda.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Ação de Guarda.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Ação de Guarda.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="guarda terceiros">
+                    <span class="document-name">GUARDA_DE_TERCEIROS.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('GUARDA_DE_TERCEIROS.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('GUARDA_DE_TERCEIROS.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="regulamentação visitas">
+                    <span class="document-name">REGULAMENTAÇÃO_DE_VISITAS (1).pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('REGULAMENTAÇÃO_DE_VISITAS (1).pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('REGULAMENTAÇÃO_DE_VISITAS (1).pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="cat-outros">
+            <div class="category-header" onclick="toggleCategory('cat-outros')">
+                <span>📄 Outros Documentos</span>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="document-list">
+                <div class="document-item" data-name="ação interdição">
+                    <span class="document-name">Ação de Interdição.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Ação de Interdição.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Ação de Interdição.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="alvará judicial">
+                    <span class="document-name">ALVARÁ JUDICIAL - Lista de documentos.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('ALVARÁ JUDICIAL - Lista de documentos.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ALVARÁ JUDICIAL - Lista de documentos.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="documentos comprovar renda">
+                    <span class="document-name">Documentos para comprovar renda.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Documentos para comprovar renda.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Documentos para comprovar renda.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="planilha gastos">
+                    <span class="document-name">MODELO PLANILHA DE GASTOS MENSAIS.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('MODELO PLANILHA DE GASTOS MENSAIS.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('MODELO PLANILHA DE GASTOS MENSAIS.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="cat-declaracoes">
+            <div class="category-header" onclick="toggleCategory('cat-declaracoes')">
+                <span>📋 Declarações</span>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="document-list">
+                <div class="document-item" data-name="declaração ausência bens">
+                    <span class="document-name">DECLARAÇÃO_DE_AUSÊNCIA_DE_BENS_(GUARDA_E_CURATELA).pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('DECLARAÇÃO_DE_AUSÊNCIA_DE_BENS_(GUARDA_E_CURATELA).pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('DECLARAÇÃO_DE_AUSÊNCIA_DE_BENS_(GUARDA_E_CURATELA).pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="declaração concordância">
+                    <span class="document-name">DECLARAÇÃO_DE_CONCORDÂNCIA_GUARDA_CURATELA_TUTELA.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('DECLARAÇÃO_DE_CONCORDÂNCIA_GUARDA_CURATELA_TUTELA.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('DECLARAÇÃO_DE_CONCORDÂNCIA_GUARDA_CURATELA_TUTELA.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="declaração inexistência impedimentos">
+                    <span class="document-name">DECLARAÇÃO_DE_INEXISTENCIA_DE_IMPEDIMENTOS.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('DECLARAÇÃO_DE_INEXISTENCIA_DE_IMPEDIMENTOS.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('DECLARAÇÃO_DE_INEXISTENCIA_DE_IMPEDIMENTOS.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="kit declaração ausência">
+                    <span class="document-name">Kit Declaração de Ausência.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('Kit Declaração de Ausência.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Kit Declaração de Ausência.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+                <div class="document-item" data-name="relatório médico curatela">
+                    <span class="document-name">RELATORIO_MEDICO_GERAL_CURATELA.pdf</span>
+                    <div class="document-actions">
+                        <button class="btn btn-view" onclick="viewDocument('RELATORIO_MEDICO_GERAL_CURATELA.pdf')">👁️ Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('RELATORIO_MEDICO_GERAL_CURATELA.pdf')">⬇️ Baixar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Modelos de Documentos Jurídicos - Todos os direitos reservados</p>
+        </div>
+    </div>
+
+    <script>
+        const basePath = 'C:\\Users\\gui19\\Desktop\\OneDrive_1_16-06-2025\\';
+        
+        function toggleCategory(categoryId) {
+            const category = document.getElementById(categoryId);
+            category.classList.toggle('collapsed');
+        }
+
+        function viewDocument(filename) {
+            const fullPath = basePath + filename;
+            // No ambiente web, tentamos abrir o arquivo
+            window.open('file:///' + fullPath.replace(/\\/g, '/'), '_blank');
+        }
+
+        function downloadDocument(filename) {
+            const fullPath = basePath + filename;
+            const link = document.createElement('a');
+            link.href = 'file:///' + fullPath.replace(/\\/g, '/');
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Funcionalidade de busca
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const documentItems = document.querySelectorAll('.document-item');
+            let visibleCount = 0;
+
+            documentItems.forEach(function(item) {
+                const documentName = item.getAttribute('data-name');
+                if (documentName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Atualizar contador de documentos visíveis
+            document.getElementById('visible-docs').textContent = visibleCount;
+
+            // Mostrar/ocultar categorias vazias
+            document.querySelectorAll('.category').forEach(function(category) {
+                const visibleItems = category.querySelectorAll('.document-item[style="display: flex;"], .document-item:not([style])').length;
+                if (searchTerm && visibleItems === 0) {
+                    category.style.display = 'none';
+                } else {
+                    category.style.display = 'block';
+                }
+            });
+        });
+
+        // Expandir todas as categorias por padrão
+        document.addEventListener('DOMContentLoaded', function() {
+            // Todas as categorias começam expandidas
+        });
+    </script>
+</body>
+</html>
