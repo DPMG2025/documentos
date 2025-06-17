@@ -176,26 +176,115 @@
             transform: translateY(-2px);
         }
 
-        .stats {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
+        .faq-section {
+            margin: 40px 0;
+        }
+
+        .faq-header {
             text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-title {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .faq-subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .faq-container {
+            display: grid;
+            gap: 30px;
+        }
+
+        .faq-category {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .stats-item {
-            display: inline-block;
-            margin: 0 20px;
+        .faq-category-title {
             color: #2c3e50;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a9b8e;
         }
 
-        .stats-number {
-            font-size: 2rem;
-            font-weight: 700;
+        .faq-item {
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 15px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
             color: #4a9b8e;
-            display: block;
+        }
+
+        .faq-question-text {
+            font-weight: 500;
+            color: #2c3e50;
+            font-size: 1rem;
+            flex-grow: 1;
+            margin-right: 15px;
+            line-height: 1.4;
+        }
+
+        .faq-question:hover .faq-question-text {
+            color: #4a9b8e;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4a9b8e;
+            transition: transform 0.3s ease;
+            width: 20px;
+            text-align: center;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0;
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-question.active + .faq-answer {
+            max-height: 300px;
+            padding: 15px 0;
         }
 
         .footer {
@@ -214,6 +303,31 @@
                 font-size: 2rem;
             }
 
+            .faq-title {
+                font-size: 1.5rem;
+            }
+
+            .faq-header {
+                padding: 20px;
+            }
+
+            .faq-category {
+                padding: 20px;
+            }
+
+            .faq-category-title {
+                font-size: 1.2rem;
+            }
+
+            .faq-question-text {
+                font-size: 0.95rem;
+                margin-right: 10px;
+            }
+
+            .faq-answer {
+                font-size: 0.9rem;
+            }
+
             .document-item {
                 flex-direction: column;
                 align-items: flex-start;
@@ -223,11 +337,6 @@
             .document-actions {
                 width: 100%;
                 justify-content: flex-end;
-            }
-
-            .stats-item {
-                display: block;
-                margin: 10px 0;
             }
         }
 
@@ -243,19 +352,8 @@
             <p>Acesse e baixe modelos de documentos para questões jurídicas familiares. Todos os documentos estão organizados por categoria para facilitar sua busca.</p>
         </div>
 
-        <div class="stats">
-            <div class="stats-item">
-                <span class="stats-number" id="total-docs">27</span>
-                <span>Total de Documentos</span>
-            </div>
-            <div class="stats-item">
-                <span class="stats-number" id="visible-docs">27</span>
-                <span>Documentos Visíveis</span>
-            </div>
-        </div>
-
         <div class="search-container">
-            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Buscar documentos...">
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Buscar documentos e perguntas...">
         </div>
 
         <div class="category" id="cat-alimentos">
@@ -522,6 +620,242 @@
             </div>
         </div>
 
+        <div class="faq-section">
+            <div class="faq-header">
+                <h2 class="faq-title">❓ Perguntas Frequentes</h2>
+                <p class="faq-subtitle">Esclarecimentos sobre questões jurídicas familiares</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-category">
+                    <h3 class="faq-category-title">💰 Alimentos (Pensão Alimentícia)</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Quem pode pedir pensão alimentícia?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Filhos menores de idade, filhos maiores que estudam (até 24 anos na faculdade), ex-cônjuge ou ex-companheiro(a) que precisa de ajuda financeira, e até mesmo pais idosos que precisam de sustento dos filhos.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Existe um valor fixo ou uma porcentagem certa para a pensão alimentícia, como 30% do salário?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Não. A ideia de que a pensão é sempre 30% do salário é um mito. O valor é definido caso a caso pelo juiz, que avalia a <strong>necessidade</strong> de quem vai receber e a <strong>possibilidade</strong> financeira de quem vai pagar, buscando um valor justo e proporcional.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">A pensão para ex-mulher ou ex-marido dura para sempre?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Não, como regra geral. A pensão para ex-cônjuge é uma medida excepcional e temporária, com o objetivo de ajudar a pessoa a se reorganizar financeiramente. A pensão vitalícia só ocorre em situações muito raras, como em caso de doença que impeça o trabalho ou idade muito avançada.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Se a pessoa não pagar a pensão, posso proibi-la de ver o filho?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Não. O direito de convivência (visitas) do filho com os pais é independente da obrigação de pagar a pensão. Impedir as visitas por falta de pagamento é ilegal e pode ser considerado alienação parental, trazendo consequências graves para quem impede.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Quando meu filho fizer 18 anos, posso simplesmente parar de pagar a pensão?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Não, de forma alguma. Atingir a maioridade não cancela a pensão automaticamente. É um erro comum que pode gerar uma grande dívida e risco de prisão. Você precisa entrar com um processo judicial específico chamado <strong>"Ação de Exoneração de Alimentos"</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h3 class="faq-category-title">👶 Guarda</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Quando posso pedir a guarda do meu filho?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Quando os pais se separam, quando um dos pais não cuida bem da criança, ou quando há risco para o filho ficar com o outro genitor.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Que tipo de guarda existe?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <strong>Guarda compartilhada:</strong> os dois pais decidem sobre a vida do filho juntos, mas a criança reside na casa de um dos pais.<br><br>
+                            <strong>Guarda unilateral:</strong> só um dos pais decide sobre a vida do filho.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Na guarda compartilhada, a criança fica uma semana na casa de cada um?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Não necessariamente. Guarda compartilhada não significa moradia alternada. A criança terá uma residência principal fixa com um dos pais, e o outro terá o direito de convivência (visitas) regulamentado para manter a rotina da criança.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Na guarda compartilhada, preciso pagar pensão?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Sim, ainda precisa. Guarda compartilhada não significa dividir gastos meio a meio.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">O que o juiz considera para dar a guarda?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            • Quem cuida melhor da criança<br>
+                            • Quem tem melhores condições (não só financeiras)<br>
+                            • Quem não atrapalha a convivência com o outro genitor<br>
+                            • O que é melhor para a criança
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h3 class="faq-category-title">⚖️ Divórcio</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Qual a diferença entre um divórcio amigável (consensual) e um com briga (litigioso)?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            O consensual ocorre quando o casal concorda com tudo (separação, divisão de bens, etc.) e é muito mais rápido e barato. O litigioso acontece quando há discordância sobre qualquer ponto, exigindo um processo judicial mais longo e caro para que um juiz decida as questões.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Preciso de motivo para me divorciar?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Não. Desde 2010, não precisa explicar por que quer se separar.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Se meu marido/esposa não quiser se divorciar, posso me divorciar mesmo assim?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Sim. O divórcio pode ser feito mesmo se só uma pessoa quiser.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Como ficam os bens no divórcio?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Depende do regime de casamento:<br><br>
+                            <strong>Comunhão parcial:</strong> divide tudo que foi comprado depois do casamento<br>
+                            <strong>Comunhão universal:</strong> divide tudo<br>
+                            <strong>Separação de bens:</strong> cada um fica com o seu
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Divórcio na Defensoria é gratuito?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Sim, totalmente gratuito, inclusive as custas do cartório.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h3 class="faq-category-title">💑 União Estável</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Quanto tempo morando junto vira união estável?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Não existe tempo mínimo. Depende de como vocês vivem: como se fossem casados, dividindo tudo, sendo reconhecidos como casal pela família.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Preciso registrar a união estável em cartório?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Não é obrigatório, mas ajuda a provar que vocês viviam como casados.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Como provo que tenho união estável?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            • Declaração de imposto de renda como dependente<br>
+                            • Conta de luz/água no nome dos dois<br>
+                            • Plano de saúde como dependente<br>
+                            • Fotos e testemunhas<br>
+                            • Filho em comum
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">União estável tem os mesmos direitos do casamento?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Sim, quase todos: pensão, herança, divisão de bens, INSS.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-question-text">Se meu companheiro morrer, tenho direito à herança?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Sim, você tem os mesmos direitos de uma esposa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="footer">
             <p>© 2025 Modelos de Documentos Jurídicos - Todos os direitos reservados</p>
         </div>
@@ -533,6 +867,10 @@
         function toggleCategory(categoryId) {
             const category = document.getElementById(categoryId);
             category.classList.toggle('collapsed');
+        }
+
+        function toggleFaq(element) {
+            element.classList.toggle('active');
         }
 
         function viewDocument(filename) {
@@ -556,24 +894,45 @@
         document.getElementById('searchBox').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
             const documentItems = document.querySelectorAll('.document-item');
-            let visibleCount = 0;
+            const faqItems = document.querySelectorAll('.faq-item');
 
+            // Busca nos documentos
             documentItems.forEach(function(item) {
                 const documentName = item.getAttribute('data-name');
                 if (documentName.includes(searchTerm)) {
                     item.style.display = 'flex';
-                    visibleCount++;
                 } else {
                     item.style.display = 'none';
                 }
             });
 
-            // Atualizar contador de documentos visíveis
-            document.getElementById('visible-docs').textContent = visibleCount;
+            // Busca nas perguntas frequentes
+            faqItems.forEach(function(item) {
+                const questionText = item.querySelector('.faq-question-text').textContent.toLowerCase();
+                const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
 
             // Mostrar/ocultar categorias vazias
             document.querySelectorAll('.category').forEach(function(category) {
                 const visibleItems = category.querySelectorAll('.document-item[style="display: flex;"], .document-item:not([style])').length;
+                
+                if (searchTerm && visibleItems === 0) {
+                    category.style.display = 'none';
+                } else {
+                    category.style.display = 'block';
+                }
+            });
+
+            // Mostrar/ocultar categorias FAQ vazias
+            document.querySelectorAll('.faq-category').forEach(function(category) {
+                const visibleItems = category.querySelectorAll('.faq-item[style="display: block;"], .faq-item:not([style])').length;
+                
                 if (searchTerm && visibleItems === 0) {
                     category.style.display = 'none';
                 } else {
