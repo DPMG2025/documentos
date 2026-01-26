@@ -4,7 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modelos de Documentos Jurídicos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2d7b6e;
+            --primary-dark: #1f5649;
+            --primary-light: #3d8a7a;
+            --accent: #9bc53d;
+            --accent-dark: #87b02c;
+            --neutral-100: #f5f7f5;
+            --neutral-200: #e8ebe8;
+            --neutral-300: #d4d9d4;
+            --neutral-700: #3a4a3a;
+            --neutral-800: #2a352a;
+            --success: #2d7b6e;
+            --shadow-sm: 0 2px 8px rgba(45, 123, 110, 0.08);
+            --shadow-md: 0 4px 16px rgba(45, 123, 110, 0.12);
+            --shadow-lg: 0 8px 32px rgba(45, 123, 110, 0.16);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,115 +32,240 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #4a9b8e 0%, #2d7b6e 100%);
+            color: var(--neutral-800);
+            background: var(--neutral-100);
             min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 280px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            z-index: -1;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 32px 24px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .info-banner {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            background: var(--primary-dark);
             color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px 28px;
+            border-radius: 4px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+            border-left: 4px solid var(--accent);
+            animation: fadeInUp 0.6s ease-out;
+            backdrop-filter: blur(10px);
         }
 
         .banner-content {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            align-items: flex-start;
+            gap: 20px;
         }
 
         .banner-icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
             flex-shrink: 0;
+            line-height: 1;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
         .banner-text {
-            font-size: 1rem;
-            line-height: 1.4;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .banner-text strong {
+            color: var(--accent);
+            font-weight: 600;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 56px;
+            background: white;
+            padding: 64px 48px 56px;
+            border-radius: 0;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 100%);
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.04;
+            pointer-events: none;
         }
 
         .header h1 {
-            color: #2c3e50;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-family: 'Crimson Pro', Georgia, serif;
+            color: var(--primary-dark);
+            font-size: 3.5rem;
+            margin-bottom: 16px;
             font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        .header h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 24px auto 0;
         }
 
         .header p {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-            max-width: 600px;
+            color: var(--neutral-700);
+            font-size: 1.125rem;
+            max-width: 680px;
             margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.7;
+            letter-spacing: -0.01em;
         }
 
         .search-container {
-            margin-bottom: 30px;
+            margin-bottom: 48px;
             text-align: center;
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         .search-box {
             width: 100%;
-            max-width: 500px;
-            padding: 15px 20px;
+            max-width: 600px;
+            padding: 18px 28px;
             font-size: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+            border: 2px solid var(--neutral-300);
+            border-radius: 2px;
             outline: none;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: var(--shadow-sm);
+            color: var(--neutral-800);
+            letter-spacing: -0.01em;
+        }
+
+        .search-box::placeholder {
+            color: var(--neutral-700);
+            opacity: 0.6;
         }
 
         .search-box:focus {
-            border-color: #4a9b8e;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md), 0 0 0 4px rgba(45, 123, 110, 0.12);
+            transform: translateY(-1px);
         }
 
         .category {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            margin-bottom: 24px;
+            background: white;
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-300);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .category:nth-child(1) { animation-delay: 0.5s; }
+        .category:nth-child(2) { animation-delay: 0.6s; }
+        .category:nth-child(3) { animation-delay: 0.7s; }
+        .category:nth-child(4) { animation-delay: 0.8s; }
+        .category:nth-child(5) { animation-delay: 0.9s; }
+        .category:nth-child(6) { animation-delay: 1s; }
+
+        .category:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
         }
 
         .category-header {
-            background: linear-gradient(135deg, #4a9b8e, #2d7b6e);
+            background: var(--primary);
             color: white;
-            padding: 20px;
-            font-size: 1.3rem;
+            padding: 24px 28px;
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.5rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .category-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
 
         .category-header:hover {
-            background: linear-gradient(135deg, #3d8a7a, #256b5c);
+            background: var(--primary-light);
+            padding-left: 32px;
+        }
+
+        .category-header:hover::before {
+            transform: scaleY(1);
         }
 
         .category-toggle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: transform 0.3s ease;
+            font-weight: 300;
         }
 
         .category.collapsed .category-toggle {
@@ -129,9 +274,9 @@
 
         .document-list {
             padding: 0;
-            max-height: 1000px;
+            max-height: 2000px;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .category.collapsed .document-list {
@@ -142,9 +287,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.3s ease;
+            padding: 20px 28px;
+            border-bottom: 1px solid var(--neutral-200);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .document-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.2s ease;
         }
 
         .document-item:last-child {
@@ -152,236 +310,359 @@
         }
 
         .document-item:hover {
-            background-color: #f8f9ff;
+            background-color: var(--neutral-100);
+            padding-left: 32px;
+        }
+
+        .document-item:hover::before {
+            transform: scaleY(1);
         }
 
         .document-name {
             font-weight: 500;
-            color: #2c3e50;
+            color: var(--neutral-800);
             flex-grow: 1;
-            margin-right: 20px;
+            margin-right: 24px;
+            font-size: 0.975rem;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .document-item:hover .document-name {
+            color: var(--primary);
         }
 
         .document-actions {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
 
         .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border: 2px solid transparent;
+            border-radius: 0;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
             font-weight: 500;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            transition: all 0.3s ease;
+            gap: 6px;
+            transition: all 0.2s ease;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
         .btn-download {
-            background: linear-gradient(135deg, #4a9b8e, #2d7b6e);
+            background: var(--primary);
             color: white;
+            border-color: var(--primary);
         }
 
         .btn-download:hover {
-            background: linear-gradient(135deg, #3d8a7a, #256b5c);
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         .btn-view {
-            background: linear-gradient(135deg, #5fb3a3, #4a9b8e);
-            color: white;
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
         }
 
         .btn-view:hover {
-            background: linear-gradient(135deg, #52a394, #3d8a7a);
+            background: var(--primary);
+            color: white;
             transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
         }
 
         .faq-section {
-            margin: 40px 0;
+            margin: 80px 0 48px;
         }
 
         .faq-header {
             text-align: center;
-            margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 56px;
+            background: white;
+            padding: 56px 48px;
+            border-radius: 0;
+            box-shadow: var(--shadow-md);
+            border-top: 6px solid var(--accent);
+            animation: fadeInUp 0.8s ease-out both;
         }
 
         .faq-title {
-            color: #2c3e50;
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-family: 'Crimson Pro', Georgia, serif;
+            color: var(--primary-dark);
+            font-size: 2.75rem;
+            margin-bottom: 16px;
             font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
         }
 
         .faq-subtitle {
-            color: #7f8c8d;
-            font-size: 1.1rem;
+            color: var(--neutral-700);
+            font-size: 1.125rem;
             margin: 0;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
         .faq-container {
             display: grid;
-            gap: 30px;
+            gap: 24px;
         }
 
         .faq-category {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 0;
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-300);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .faq-category:nth-child(1) { animation-delay: 0.2s; }
+        .faq-category:nth-child(2) { animation-delay: 0.3s; }
+        .faq-category:nth-child(3) { animation-delay: 0.4s; }
+        .faq-category:nth-child(4) { animation-delay: 0.5s; }
+        .faq-category:nth-child(5) { animation-delay: 0.6s; }
+
+        .faq-category:hover {
+            box-shadow: var(--shadow-md);
+            border-left-width: 6px;
         }
 
         .faq-category-title {
-            color: #2c3e50;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #4a9b8e;
+            font-family: 'Crimson Pro', Georgia, serif;
+            color: var(--primary-dark);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--neutral-200);
+            letter-spacing: -0.02em;
         }
 
         .faq-item {
-            border-bottom: 1px solid #f0f0f0;
-            margin-bottom: 15px;
+            border-bottom: 1px solid var(--neutral-200);
+            margin-bottom: 0;
         }
 
         .faq-item:last-child {
             border-bottom: none;
-            margin-bottom: 0;
         }
 
         .faq-question {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 20px 0;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            gap: 20px;
         }
 
         .faq-question:hover {
-            color: #4a9b8e;
+            padding-left: 8px;
         }
 
         .faq-question-text {
-            font-weight: 500;
-            color: #2c3e50;
-            font-size: 1rem;
+            font-weight: 600;
+            color: var(--neutral-800);
+            font-size: 1.05rem;
             flex-grow: 1;
-            margin-right: 15px;
-            line-height: 1.4;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
         }
 
         .faq-question:hover .faq-question-text {
-            color: #4a9b8e;
+            color: var(--primary);
         }
 
         .faq-icon {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #4a9b8e;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--accent);
             transition: transform 0.3s ease;
-            width: 20px;
+            width: 24px;
+            height: 24px;
             text-align: center;
+            flex-shrink: 0;
+            line-height: 1;
         }
 
         .faq-question.active .faq-icon {
             transform: rotate(45deg);
+            color: var(--primary);
         }
 
         .faq-answer {
             padding: 0;
-            color: #555;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            color: var(--neutral-700);
+            line-height: 1.7;
+            font-size: 0.975rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+            letter-spacing: -0.01em;
         }
 
         .faq-question.active + .faq-answer {
-            max-height: 300px;
-            padding: 15px 0;
+            max-height: 400px;
+            padding: 0 0 24px 0;
         }
 
         .footer {
             text-align: center;
-            margin-top: 40px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
+            margin-top: 80px;
+            padding: 32px 0;
+            color: var(--neutral-700);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--neutral-300);
+            background: white;
+            letter-spacing: -0.01em;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 16px;
+            }
+
+            body::before {
+                height: 200px;
             }
 
             .info-banner {
-                padding: 12px 15px;
-                margin-bottom: 15px;
+                padding: 16px 20px;
+                margin-bottom: 24px;
             }
 
             .banner-content {
                 flex-direction: column;
-                gap: 10px;
+                align-items: center;
+                gap: 12px;
                 text-align: center;
             }
 
             .banner-text {
-                font-size: 0.9rem;
+                font-size: 0.875rem;
+            }
+
+            .header {
+                padding: 40px 24px 32px;
+                margin-bottom: 40px;
             }
 
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
 
-            .faq-title {
-                font-size: 1.5rem;
+            .header p {
+                font-size: 1rem;
+            }
+
+            .search-box {
+                padding: 14px 20px;
+                font-size: 0.95rem;
+            }
+
+            .category-header {
+                padding: 20px 20px;
+                font-size: 1.25rem;
+            }
+
+            .category-header:hover {
+                padding-left: 24px;
+            }
+
+            .document-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 16px 20px;
+            }
+
+            .document-name {
+                margin-right: 0;
+            }
+
+            .document-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .btn {
+                flex: 1;
+                justify-content: center;
+                font-size: 0.8rem;
+                padding: 9px 14px;
+            }
+
+            .faq-section {
+                margin: 56px 0 32px;
             }
 
             .faq-header {
-                padding: 20px;
+                padding: 32px 24px;
+                margin-bottom: 40px;
+            }
+
+            .faq-title {
+                font-size: 2rem;
+            }
+
+            .faq-subtitle {
+                font-size: 1rem;
             }
 
             .faq-category {
-                padding: 20px;
+                padding: 24px 20px;
             }
 
             .faq-category-title {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+
+            .faq-question {
+                padding: 16px 0;
             }
 
             .faq-question-text {
-                font-size: 0.95rem;
-                margin-right: 10px;
+                font-size: 0.975rem;
             }
 
             .faq-answer {
                 font-size: 0.9rem;
             }
 
-            .document-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .document-actions {
-                width: 100%;
-                justify-content: flex-end;
+            .footer {
+                margin-top: 56px;
+                font-size: 0.8rem;
             }
         }
 
         .hidden {
             display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
@@ -389,7 +670,7 @@
     <div class="container">
         <div class="info-banner">
             <div class="banner-content">
-                <div class="banner-icon">🏛️</div>
+                <div class="banner-icon">⚖</div>
                 <div class="banner-text">
                     <strong>Defensoria Pública - Divinópolis:</strong> Para iniciarmos seu atendimento compareça na Av. JK, 1199, Bom Pastor (em frente ao DIVISHOP). Atendimento com Giselle: 8h30-11h30 e 13h-15h.
                 </div>
@@ -397,81 +678,81 @@
         </div>
 
         <div class="header">
-            <h1>📋 Modelos de Documentos Jurídicos</h1>
+            <h1>Modelos de Documentos Jurídicos</h1>
             <p>Acesse e baixe modelos de documentos para questões jurídicas familiares. Todos os documentos estão organizados por categoria para facilitar sua busca.</p>
         </div>
 
         <div class="search-container">
-            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Buscar documentos e perguntas...">
+            <input type="text" class="search-box" id="searchBox" placeholder="Buscar documentos e perguntas...">
         </div>
 
         <div class="category" id="cat-alimentos">
             <div class="category-header" onclick="toggleCategory('cat-alimentos')">
-                <span>💰 Alimentos</span>
+                <span>Alimentos</span>
                 <span class="category-toggle">▼</span>
             </div>
             <div class="document-list">
                 <div class="document-item" data-name="alimentos menor">
                     <span class="document-name">Alimentos para Menor</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('ALIMENTOS MENOR.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('ALIMENTOS MENOR.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('ALIMENTOS MENOR.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ALIMENTOS MENOR.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="alimentos avós">
                     <span class="document-name">Alimentos dos Avós</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('ALIMENTOS_AVOENGOS.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('ALIMENTOS_AVOENGOS.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('ALIMENTOS_AVOENGOS.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ALIMENTOS_AVOENGOS.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="alimentos gravídicos">
                     <span class="document-name">Alimentos Gravídicos</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('ALIMENTOS_GRAVÍDICOS.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('ALIMENTOS_GRAVÍDICOS.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('ALIMENTOS_GRAVÍDICOS.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ALIMENTOS_GRAVÍDICOS.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="execução alimentos">
                     <span class="document-name">Execução de Alimentos</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('EXECUÇÃO_DE_ALIMENTOS.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('EXECUÇÃO_DE_ALIMENTOS.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('EXECUÇÃO_DE_ALIMENTOS.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('EXECUÇÃO_DE_ALIMENTOS.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="exoneração alimentos">
                     <span class="document-name">Exoneração de Alimentos</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('EXONERAÇÃO_DE_ALIMENTOS.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('EXONERAÇÃO_DE_ALIMENTOS.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('EXONERAÇÃO_DE_ALIMENTOS.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('EXONERAÇÃO_DE_ALIMENTOS.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="oferta alimentos visitas">
                     <span class="document-name">Oferta de Alimentos com Regulamentação de Visitas</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('OFERTA_DE_ALIMENTOS_COM_REGULAMENTAÇÃO_DE_VISITAS.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('OFERTA_DE_ALIMENTOS_COM_REGULAMENTAÇÃO_DE_VISITAS.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('OFERTA_DE_ALIMENTOS_COM_REGULAMENTAÇÃO_DE_VISITAS.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('OFERTA_DE_ALIMENTOS_COM_REGULAMENTAÇÃO_DE_VISITAS.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="revisional alimentos diminuir">
                     <span class="document-name">Ação Revisional de Alimentos - Diminuir</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Ação Revisonal de Alimentos - Diminuir.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Ação Revisonal de Alimentos - Diminuir.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Ação Revisonal de Alimentos - Diminuir.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Ação Revisonal de Alimentos - Diminuir.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="revisional alimentos aumento">
                     <span class="document-name">Revisional de Alimentos - Aumento</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('REVISIONAL_DE_ALIMENTOS_-_AUMENTO.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('REVISIONAL_DE_ALIMENTOS_-_AUMENTO.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('REVISIONAL_DE_ALIMENTOS_-_AUMENTO.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('REVISIONAL_DE_ALIMENTOS_-_AUMENTO.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="kit alimentos maior">
                     <span class="document-name">Kit Alimentos para Maior</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Kit Alimentos Maior.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Kit Alimentos Maior.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Kit Alimentos Maior.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Kit Alimentos Maior.pdf')">Baixar</button>
                     </div>
                 </div>
             </div>
@@ -479,36 +760,36 @@
 
         <div class="category" id="cat-divorcio">
             <div class="category-header" onclick="toggleCategory('cat-divorcio')">
-                <span>⚖️ Divórcio e Separação</span>
+                <span>Divórcio e Separação</span>
                 <span class="category-toggle">▼</span>
             </div>
             <div class="document-list">
                 <div class="document-item" data-name="divórcio consensual">
                     <span class="document-name">Divórcio Consensual</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Divórcio Consensual..pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Divórcio Consensual..pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Divórcio Consensual..pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Divórcio Consensual..pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="divórcio litigioso">
                     <span class="document-name">Divórcio Litigioso</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Divórcio Litigioso 1.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Divórcio Litigioso 1.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Divórcio Litigioso 1.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Divórcio Litigioso 1.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="conversão separação consensual">
                     <span class="document-name">Conversão de Separação Judicial em Divórcio Consensual</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Conversão de Separação Judicial em Divórcio Consensual.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Conversão de Separação Judicial em Divórcio Consensual.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Conversão de Separação Judicial em Divórcio Consensual.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Conversão de Separação Judicial em Divórcio Consensual.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="conversão separação litigioso">
                     <span class="document-name">Conversão de Separação Judicial em Divórcio Litigioso</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Conversão de Separação Judicial em Divórcio Litigioso.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Conversão de Separação Judicial em Divórcio Litigioso.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Conversão de Separação Judicial em Divórcio Litigioso.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Conversão de Separação Judicial em Divórcio Litigioso.pdf')">Baixar</button>
                     </div>
                 </div>
             </div>
@@ -516,36 +797,36 @@
 
         <div class="category" id="cat-paternidade">
             <div class="category-header" onclick="toggleCategory('cat-paternidade')">
-                <span>👨‍👧‍👦 Paternidade</span>
+                <span>Paternidade</span>
                 <span class="category-toggle">▼</span>
             </div>
             <div class="document-list">
                 <div class="document-item" data-name="investigação paternidade">
                     <span class="document-name">Ação de Investigação de Paternidade</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Ação de Investigação de Paternidade.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Ação de Investigação de Paternidade.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Ação de Investigação de Paternidade.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Ação de Investigação de Paternidade.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="investigação paternidade menor">
                     <span class="document-name">Investigação de Paternidade - Menor</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('INVESTIGAÇÃO_DE_PATERNIDADE_ MENOR.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('INVESTIGAÇÃO_DE_PATERNIDADE_ MENOR.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('INVESTIGAÇÃO_DE_PATERNIDADE_ MENOR.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('INVESTIGAÇÃO_DE_PATERNIDADE_ MENOR.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="investigação paternidade maior">
                     <span class="document-name">Investigação de Paternidade - Maior</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('INVESTIGAÇÃO_DE_PATERNIDADE_-_MAIOR.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('INVESTIGAÇÃO_DE_PATERNIDADE_-_MAIOR.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('INVESTIGAÇÃO_DE_PATERNIDADE_-_MAIOR.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('INVESTIGAÇÃO_DE_PATERNIDADE_-_MAIOR.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="negatória paternidade">
                     <span class="document-name">Negatória de Paternidade</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('NEGATORIA_DE_PATERNIDADE.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('NEGATORIA_DE_PATERNIDADE.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('NEGATORIA_DE_PATERNIDADE.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('NEGATORIA_DE_PATERNIDADE.pdf')">Baixar</button>
                     </div>
                 </div>
             </div>
@@ -553,36 +834,36 @@
 
         <div class="category" id="cat-guarda">
             <div class="category-header" onclick="toggleCategory('cat-guarda')">
-                <span>👶 Guarda e Adoção</span>
+                <span>Guarda e Adoção</span>
                 <span class="category-toggle">▼</span>
             </div>
             <div class="document-list">
                 <div class="document-item" data-name="adoção maior">
                     <span class="document-name">Adoção de Maior</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('ADOÇÃO_MAIOR.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('ADOÇÃO_MAIOR.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('ADOÇÃO_MAIOR.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ADOÇÃO_MAIOR.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="ação guarda">
                     <span class="document-name">Ação de Guarda</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Ação de Guarda.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Ação de Guarda.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Ação de Guarda.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Ação de Guarda.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="guarda terceiros">
                     <span class="document-name">Guarda de Terceiros</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('GUARDA_DE_TERCEIROS.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('GUARDA_DE_TERCEIROS.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('GUARDA_DE_TERCEIROS.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('GUARDA_DE_TERCEIROS.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="regulamentação visitas">
                     <span class="document-name">Regulamentação de Visitas</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('REGULAMENTAÇÃO_DE_VISITAS (1).pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('REGULAMENTAÇÃO_DE_VISITAS (1).pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('REGULAMENTAÇÃO_DE_VISITAS (1).pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('REGULAMENTAÇÃO_DE_VISITAS (1).pdf')">Baixar</button>
                     </div>
                 </div>
             </div>
@@ -590,36 +871,36 @@
 
         <div class="category" id="cat-outros">
             <div class="category-header" onclick="toggleCategory('cat-outros')">
-                <span>📄 Outros Documentos</span>
+                <span>Outros Documentos</span>
                 <span class="category-toggle">▼</span>
             </div>
             <div class="document-list">
                 <div class="document-item" data-name="ação interdição">
                     <span class="document-name">Ação de Interdição</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Ação de Interdição.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Ação de Interdição.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Ação de Interdição.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Ação de Interdição.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="alvará judicial">
                     <span class="document-name">Alvará Judicial - Lista de Documentos</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('ALVARÁ JUDICIAL - Lista de documentos.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('ALVARÁ JUDICIAL - Lista de documentos.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('ALVARÁ JUDICIAL - Lista de documentos.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('ALVARÁ JUDICIAL - Lista de documentos.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="documentos comprovar renda">
                     <span class="document-name">Documentos para Comprovar Renda</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Documentos para comprovar renda.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Documentos para comprovar renda.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Documentos para comprovar renda.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Documentos para comprovar renda.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="planilha gastos">
                     <span class="document-name">Modelo Planilha de Gastos Mensais</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('MODELO PLANILHA DE GASTOS MENSAIS.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('MODELO PLANILHA DE GASTOS MENSAIS.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('MODELO PLANILHA DE GASTOS MENSAIS.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('MODELO PLANILHA DE GASTOS MENSAIS.pdf')">Baixar</button>
                     </div>
                 </div>
             </div>
@@ -627,43 +908,43 @@
 
         <div class="category" id="cat-declaracoes">
             <div class="category-header" onclick="toggleCategory('cat-declaracoes')">
-                <span>📋 Declarações</span>
+                <span>Declarações</span>
                 <span class="category-toggle">▼</span>
             </div>
             <div class="document-list">
                 <div class="document-item" data-name="declaração ausência bens">
                     <span class="document-name">Declaração de Ausência de Bens (Guarda e Curatela)</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('DECLARAÇÃO_DE_AUSÊNCIA_DE_BENS_(GUARDA_E_CURATELA).pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('DECLARAÇÃO_DE_AUSÊNCIA_DE_BENS_(GUARDA_E_CURATELA).pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('DECLARAÇÃO_DE_AUSÊNCIA_DE_BENS_(GUARDA_E_CURATELA).pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('DECLARAÇÃO_DE_AUSÊNCIA_DE_BENS_(GUARDA_E_CURATELA).pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="declaração concordância">
                     <span class="document-name">Declaração de Concordância - Guarda, Curatela e Tutela</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('DECLARAÇÃO_DE_CONCORDÂNCIA_GUARDA_CURATELA_TUTELA.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('DECLARAÇÃO_DE_CONCORDÂNCIA_GUARDA_CURATELA_TUTELA.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('DECLARAÇÃO_DE_CONCORDÂNCIA_GUARDA_CURATELA_TUTELA.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('DECLARAÇÃO_DE_CONCORDÂNCIA_GUARDA_CURATELA_TUTELA.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="declaração inexistência impedimentos">
                     <span class="document-name">Declaração de Inexistência de Impedimentos</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('DECLARAÇÃO_DE_INEXISTENCIA_DE_IMPEDIMENTOS.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('DECLARAÇÃO_DE_INEXISTENCIA_DE_IMPEDIMENTOS.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('DECLARAÇÃO_DE_INEXISTENCIA_DE_IMPEDIMENTOS.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('DECLARAÇÃO_DE_INEXISTENCIA_DE_IMPEDIMENTOS.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="kit declaração ausência">
                     <span class="document-name">Kit Declaração de Ausência</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('Kit Declaração de Ausência.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('Kit Declaração de Ausência.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('Kit Declaração de Ausência.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('Kit Declaração de Ausência.pdf')">Baixar</button>
                     </div>
                 </div>
                 <div class="document-item" data-name="relatório médico curatela">
                     <span class="document-name">Relatório Médico Geral - Curatela</span>
                     <div class="document-actions">
-                        <button class="btn btn-view" onclick="viewDocument('RELATORIO_MEDICO_GERAL_CURATELA.pdf')">👁️ Visualizar</button>
-                        <button class="btn btn-download" onclick="downloadDocument('RELATORIO_MEDICO_GERAL_CURATELA.pdf')">⬇️ Baixar</button>
+                        <button class="btn btn-view" onclick="viewDocument('RELATORIO_MEDICO_GERAL_CURATELA.pdf')">Visualizar</button>
+                        <button class="btn btn-download" onclick="downloadDocument('RELATORIO_MEDICO_GERAL_CURATELA.pdf')">Baixar</button>
                     </div>
                 </div>
             </div>
@@ -671,13 +952,13 @@
 
         <div class="faq-section">
             <div class="faq-header">
-                <h2 class="faq-title">❓ Perguntas Frequentes</h2>
+                <h2 class="faq-title">Perguntas Frequentes</h2>
                 <p class="faq-subtitle">Esclarecimentos sobre questões jurídicas familiares</p>
             </div>
             
             <div class="faq-container">
                 <div class="faq-category">
-                    <h3 class="faq-category-title">💰 Alimentos (Pensão Alimentícia)</h3>
+                    <h3 class="faq-category-title">Alimentos (Pensão Alimentícia)</h3>
                     
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
@@ -731,7 +1012,7 @@
                 </div>
 
                 <div class="faq-category">
-                    <h3 class="faq-category-title">👶 Guarda</h3>
+                    <h3 class="faq-category-title">Guarda</h3>
                     
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
@@ -789,7 +1070,7 @@
                 </div>
 
                 <div class="faq-category">
-                    <h3 class="faq-category-title">⚖️ Divórcio</h3>
+                    <h3 class="faq-category-title">Divórcio</h3>
                     
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
@@ -846,7 +1127,7 @@
                 </div>
 
                 <div class="faq-category">
-                    <h3 class="faq-category-title">💑 União Estável</h3>
+                    <h3 class="faq-category-title">União Estável</h3>
                     
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
@@ -904,7 +1185,7 @@
                 </div>
 
                 <div class="faq-category">
-                    <h3 class="faq-category-title">🛡️ Curatela</h3>
+                    <h3 class="faq-category-title">Curatela</h3>
                     
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
