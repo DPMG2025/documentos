@@ -1,0 +1,28 @@
+---
+import FAQItem from './FAQItem.astro';
+
+export interface Props {
+  faqs: Array<{
+    category: string;
+    questions: Array<{ q: string; a: string }>;
+  }>;
+}
+
+const { faqs } = Astro.props;
+---
+
+<section class="faq-section">
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 32px;">❓ Perguntas Frequentes</h2>
+    <div class="faq-container">
+      {faqs.map(faqCategory => (
+        <div class="faq-category">
+          <h3 class="faq-category-title">{faqCategory.category}</h3>
+          {faqCategory.questions.map((q, i) => (
+            <FAQItem question={q.q} answer={q.a} number={i + 1} />
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

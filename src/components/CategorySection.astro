@@ -1,0 +1,35 @@
+---
+import DocumentCard from './DocumentCard.astro';
+
+export interface Props {
+  id: string;
+  title: string;
+  icon: string;
+  headerColor: string;
+  documents: Array<{ name: string; filename: string }>;
+}
+
+const { id, title, icon, headerColor, documents } = Astro.props;
+---
+
+<div class="category" id={id}>
+  <div
+    class="category-header"
+    style={`background: ${headerColor}; color: var(--text-primary);`}
+    onclick={`toggleCategory('${id}')`}
+    onkeydown={`if(event.key==='Enter'||event.key===' ')toggleCategory('${id}')`}
+    role="button"
+    tabindex="0"
+    aria-expanded="true"
+    aria-controls={`list-${id}`}
+  >
+    <span class="icon">{icon}</span>
+    <span>{title}</span>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="document-list" id={`list-${id}`}>
+    {documents.map(doc => (
+      <DocumentCard name={doc.name} filename={doc.filename} />
+    ))}
+  </div>
+</div>

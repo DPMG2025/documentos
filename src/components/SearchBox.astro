@@ -1,0 +1,22 @@
+---
+---
+
+<section style="padding: 32px 0; background: var(--bg-page);">
+  <div class="container">
+    <div style="max-width: 600px; margin: 0 auto; position: relative;">
+      <svg style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--text-secondary); pointer-events: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="Buscar documentos e perguntas..."
+        aria-label="Buscar documentos e perguntas frequentes"
+        autocomplete="off"
+        style="width: 100%; padding: 16px 16px 16px 48px; font-size: 1rem; border: 2px solid #d4ddd4; border-radius: var(--radius-sm); background: white; font-family: 'Inter', sans-serif; color: var(--text-primary);"
+      >
+    </div>
+    <div id="searchResultsInfo" style="margin-top: 12px; font-size: 0.875rem; color: var(--text-secondary); min-height: 1.4em; text-align: center;" aria-live="polite" aria-atomic="true"></div>
+  </div>
+</section>

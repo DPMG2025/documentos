@@ -1,0 +1,49 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import HeroBanner from '../components/HeroBanner.astro';
+import SearchBox from '../components/SearchBox.astro';
+import CategorySection from '../components/CategorySection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Footer from '../components/Footer.astro';
+import data from '../data/documents.json';
+---
+
+<MainLayout>
+  <Header />
+  <HeroBanner />
+  <SearchBox />
+
+  <section style="padding: 24px 0; background: var(--bg-page);">
+    <div class="container">
+      {data.categories.map((cat) => (
+        <CategorySection
+          id={cat.id}
+          title={cat.title}
+          icon={cat.icon}
+          headerColor={cat.headerColor}
+          documents={cat.documents}
+        />
+      ))}
+    </div>
+  </section>
+
+  <div id="noResultsMessage" style="display: none; text-align: center; padding: 48px 24px; color: var(--text-secondary); font-size: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); margin: 0 24px;" role="status" aria-live="polite">
+    <strong style="color: var(--text-primary); display: block; margin-bottom: 8px; font-size: 1.125rem;">Nenhum resultado encontrado</strong>
+    Tente buscar com outras palavras ou verifique a ortografia.
+  </div>
+
+  <FAQSection faqs={data.faq} />
+  <Footer />
+
+  <button
+    id="fabScrollTop"
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    aria-label="Voltar ao topo"
+    style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; transform: translateY(20px); transition: all 0.3s ease; z-index: 100; font-size: 1.25rem;"
+  >
+    ↑
+  </button>
+
+  <script src="/documentos/scripts/search.js" is:inline></script>
+</MainLayout>

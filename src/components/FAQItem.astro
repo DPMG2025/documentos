@@ -1,0 +1,29 @@
+---
+export interface Props {
+  question: string;
+  answer: string;
+  number: number;
+}
+
+const { question, answer, number } = Astro.props;
+---
+
+<div class="faq-item">
+  <div
+    class="faq-question"
+    onclick="toggleFaq(this)"
+    onkeydown="if(event.key==='Enter'||event.key===' ')toggleFaq(this)"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
+  >
+    <span class="faq-question-text">
+      <span class="faq-number" aria-hidden="true">{number}</span>
+      {question}
+    </span>
+    <span class="faq-icon">+</span>
+  </div>
+  <div class="faq-answer">
+    {answer}
+  </div>
+</div>

@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Modelos de Documentos Jurídicos - Defensoria Pública Divinópolis',
+  description = 'Acesse e baixe modelos de documentos para questões jurídicas familiares. Atendimento gratuito.'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <meta name="keywords" content="documentos jurídicos, defensoria pública, divinópolis, alimentos, divórcio, guarda, paternidade, curatela">
+  <meta name="author" content="Defensoria Pública - Divinópolis">
+  <meta name="theme-color" content="#1a5c52">
+
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://dpmg2025.github.io/documentos/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/documentos/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/documentos/apple-touch-icon.png">
+  <link rel="canonical" href="https://dpmg2025.github.io/documentos/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <title>{title}</title>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+  <main id="main-content">
+    <slot />
+  </main>
+</body>
+</html>
