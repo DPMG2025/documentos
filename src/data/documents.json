@@ -1,0 +1,137 @@
+{
+  "categories": [
+    {
+      "id": "alimentos",
+      "title": "Alimentos",
+      "icon": "💰",
+      "headerColor": "#f0f5f0",
+      "documents": [
+        { "name": "Alimentos para Menor", "filename": "ALIMENTOS MENOR.pdf" },
+        { "name": "Alimentos dos Avós", "filename": "ALIMENTOS_AVOENGOS.pdf" },
+        { "name": "Alimentos Gravídicos", "filename": "ALIMENTOS_GRAVÍDICOS.pdf" },
+        { "name": "Execução de Alimentos", "filename": "EXECUÇÃO_DE_ALIMENTOS.pdf" },
+        { "name": "Exoneração de Alimentos", "filename": "EXONERAÇÃO_DE_ALIMENTOS.pdf" },
+        { "name": "Oferta de Alimentos com Regulamentação de Visitas", "filename": "OFERTA_DE_ALIMENTOS_COM_REGULAMENTAÇÃO_DE_VISITAS.pdf" },
+        { "name": "Ação Revisional de Alimentos - Diminuir", "filename": "Ação Revisonal de Alimentos - Diminuir.pdf" },
+        { "name": "Revisional de Alimentos - Aumento", "filename": "REVISIONAL_DE_ALIMENTOS_-_AUMENTO.pdf" },
+        { "name": "Kit Alimentos para Maior", "filename": "Kit Alimentos Maior.pdf" }
+      ]
+    },
+    {
+      "id": "divorcio",
+      "title": "Divórcio e Separação",
+      "icon": "💔",
+      "headerColor": "#f5f0f5",
+      "documents": [
+        { "name": "Divórcio Consensual", "filename": "Divórcio Consensual..pdf" },
+        { "name": "Divórcio Litigioso", "filename": "Divórcio Litigioso 1.pdf" },
+        { "name": "Conversão de Separação Judicial em Divórcio Consensual", "filename": "Conversão de Separação Judicial em Divórcio Consensual.pdf" },
+        { "name": "Conversão de Separação Judicial em Divórcio Litigioso", "filename": "Conversão de Separação Judicial em Divórcio Litigioso.pdf" }
+      ]
+    },
+    {
+      "id": "paternidade",
+      "title": "Paternidade",
+      "icon": "👨‍👧",
+      "headerColor": "#f0f3f8",
+      "documents": [
+        { "name": "Ação de Investigação de Paternidade", "filename": "Ação de Investigação de Paternidade.pdf" },
+        { "name": "Investigação de Paternidade - Menor", "filename": "INVESTIGAÇÃO_DE_PATERNIDADE_ MENOR.pdf" },
+        { "name": "Investigação de Paternidade - Maior", "filename": "INVESTIGAÇÃO_DE_PATERNIDADE_-_MAIOR.pdf" },
+        { "name": "Negatória de Paternidade", "filename": "NEGATORIA_DE_PATERNIDADE.pdf" }
+      ]
+    },
+    {
+      "id": "guarda",
+      "title": "Guarda e Adoção",
+      "icon": "👨‍👩‍👧",
+      "headerColor": "#faf5f0",
+      "documents": [
+        { "name": "Adoção de Maior", "filename": "ADOÇÃO_MAIOR.pdf" },
+        { "name": "Ação de Guarda", "filename": "Ação de Guarda.pdf" },
+        { "name": "Guarda de Terceiros", "filename": "GUARDA_DE_TERCEIROS.pdf" },
+        { "name": "Regulamentação de Visitas", "filename": "REGULAMENTAÇÃO_DE_VISITAS (1).pdf" }
+      ]
+    },
+    {
+      "id": "outros",
+      "title": "Outros Documentos",
+      "icon": "📄",
+      "headerColor": "#f5f8f0",
+      "documents": [
+        { "name": "Ação de Interdição", "filename": "Ação de Interdição.pdf" },
+        { "name": "Alvará Judicial - Lista de Documentos", "filename": "ALVARÁ JUDICIAL - Lista de documentos.pdf" },
+        { "name": "Documentos para Comprovar Renda", "filename": "Documentos para comprovar renda.pdf" },
+        { "name": "Modelo Planilha de Gastos Mensais", "filename": "MODELO PLANILHA DE GASTOS MENSAIS.pdf" }
+      ]
+    },
+    {
+      "id": "declaracoes",
+      "title": "Declarações",
+      "icon": "✍️",
+      "headerColor": "#f0f5f8",
+      "documents": [
+        { "name": "Declaração de Ausência de Bens (Guarda e Curatela)", "filename": "DECLARAÇÃO_DE_AUSÊNCIA_DE_BENS_(GUARDA_E_CURATELA).pdf" },
+        { "name": "Declaração de Concordância - Guarda, Curatela e Tutela", "filename": "DECLARAÇÃO_DE_CONCORDÂNCIA_GUARDA_CURATELA_TUTELA.pdf" },
+        { "name": "Declaração de Inexistência de Impedimentos", "filename": "DECLARAÇÃO_DE_INEXISTENCIA_DE_IMPEDIMENTOS.pdf" },
+        { "name": "Kit Declaração de Ausência", "filename": "Kit Declaração de Ausência.pdf" },
+        { "name": "Relatório Médico Geral - Curatela", "filename": "RELATORIO_MEDICO_GERAL_CURATELA.pdf" }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "category": "Alimentos (Pensão Alimentícia)",
+      "questions": [
+        { "q": "Quem pode pedir pensão alimentícia?", "a": "Filhos menores de idade, filhos maiores que estudam (até 24 anos na faculdade), ex-cônjuge ou ex-companheiro(a) que precisa de ajuda financeira, e até mesmo pais idosos que precisam de sustento dos filhos." },
+        { "q": "Existe um valor fixo ou uma porcentagem certa para a pensão alimentícia, como 30% do salário?", "a": "Não. A ideia de que a pensão é sempre 30% do salário é um mito. O valor é definido caso a caso pelo juiz, que avalia a NECESSIDADE de quem vai receber e a POSSIBILIDADE financeira de quem vai pagar, buscando um valor justo e proporcional." },
+        { "q": "A pensão para ex-mulher ou ex-marido dura para sempre?", "a": "Não, como regra geral. A pensão para ex-conjuge é uma medida excepcional e temporária, com o objetivo de ajudar a pessoa a se reorganizar financeiramente. A pensão vitalícia só ocorre em situações muito raras, como em caso de doença que impeca o trabalho ou idade muito avançada." },
+        { "q": "Se a pessoa não pagar a pensão, posso proibi-la de ver o filho?", "a": "Não. O direito de convivência (visitas) do filho com os pais é independente da obrigação de pagar a pensão. Impedir as visitas por falta de pagamento é ilegal e pode ser considerado alienação parental, trazendo consequências graves para quem impede." },
+        { "q": "Quando meu filho fizer 18 anos, posso simplesmente parar de pagar a pensão?", "a": "Não, de forma alguma. Atingir a maioridade não cancela a pensão automaticamente. É um erro comum que pode gerar uma grande dívida e risco de prisão. Você precisa entrar com um processo judicial específico chamado AÇÃO DE EXONERAÇÃO DE ALIMENTOS." }
+      ]
+    },
+    {
+      "category": "Guarda",
+      "questions": [
+        { "q": "Quando posso pedir a guarda do meu filho?", "a": "Quando os pais se separam, quando um dos pais não cuida bem da criança, ou quando há risco para o filho ficar com o outro genitor." },
+        { "q": "Que tipo de guarda existe?", "a": "GUARDA COMPARTILHADA: os dois pais decidem sobre a vida do filho juntos, mas a criança reside na casa de um dos pais. GUARDA UNILATERAL: só um dos pais decide sobre a vida do filho." },
+        { "q": "Na guarda compartilhada, a criança fica uma semana na casa de cada um?", "a": "Não necessariamente. Guarda compartilhada não significa moradia alternada. A criança terá uma residência principal fixa com um dos pais, e o outro terá o direito de convivência (visitas) regulamentado para manter a rotina da criança." },
+        { "q": "Na guarda compartilhada, preciso pagar pensão?", "a": "Sim, ainda precisa. Guarda compartilhada não significa dividir gastos meio a meio." },
+        { "q": "O que o juiz considera para dar a guarda?", "a": "Quem cuida melhor da criança. Quem tem melhores condições (não só financeiras). Quem não atrapalha a convivência com o outro genitor. O que é melhor para a criança." }
+      ]
+    },
+    {
+      "category": "Divórcio",
+      "questions": [
+        { "q": "Qual a diferença entre um divórcio amigável (consensual) e um com briga (litigioso)?", "a": "O consensual ocorre quando o casal concorda com tudo (separação, divisão de bens, etc.) e é muito mais rápido e barato. O litigioso acontece quando há discordância sobre qualquer ponto, exigindo um processo judicial mais longo e caro para que um juiz decida as questões." },
+        { "q": "Preciso de motivo para me divorciar?", "a": "Não. Desde 2010, não precisa explicar por que quer se separar." },
+        { "q": "Se meu marido/esposa não quiser se divorciar, posso me divorciar mesmo assim?", "a": "Sim. O divórcio pode ser feito mesmo se só uma pessoa quiser." },
+        { "q": "Como ficam os bens no divórcio?", "a": "COMUNHÃO PARCIAL: divide tudo que foi comprado depois do casamento. COMUNHÃO UNIVERSAL: divide tudo. SEPARAÇÃO DE BENS: cada um fica com o seu." },
+        { "q": "Divórcio na Defensoria é gratuito?", "a": "Sim, totalmente gratuito, inclusive as custas do cartório." }
+      ]
+    },
+    {
+      "category": "União Estável",
+      "questions": [
+        { "q": "Quanto tempo morando junto vira união estável?", "a": "Não existe tempo mínimo. Depende de como vocês vivem: como se fossem casados, dividindo tudo, sendo reconhecidos como casal pela família." },
+        { "q": "Preciso registrar a união estável em cartório?", "a": "Não é obrigatório, mas ajuda a provar que vocês viviam como casados." },
+        { "q": "Como provo que tenho união estável?", "a": "Declaração de imposto de renda como dependente. Conta de luz/água no nome dos dois. Plano de saúde como dependente. Fotos e testemunhas. Filho em comum." },
+        { "q": "União estável tem os mesmos direitos do casamento?", "a": "Sim, quase todos: pensão, herança, divisão de bens, INSS." },
+        { "q": "Se meu companheiro morrer, tenho direito à herança?", "a": "Sim, você tem os mesmos direitos de uma esposa." }
+      ]
+    },
+    {
+      "category": "Curatela",
+      "questions": [
+        { "q": "Quando devo pedir a curatela para um familiar?", "a": "Peça quando seu familiar não consegue mais entender as consequências das suas decisões, especialmente sobre dinheiro e bens. Por exemplo: se ele tem Alzheimer e está sendo enganado, se gasta todo o dinheiro da aposentadoria sem controle, ou se alguém está se aproveitando dele para pegar seus bens." },
+        { "q": "Quem pode ser curador?", "a": "Primeiro o cônjuge/companheiro, depois os filhos e outros parentes próximos, nessa ordem. O juiz sempre escolhe quem vai cuidar melhor da pessoa. Pode ser mais de uma pessoa dividindo as responsabilidades." },
+        { "q": "O que posso fazer como curador?", "a": "Você pode cuidar do dinheiro, pagar contas, receber aposentadoria, fazer compras necessárias. Para vender casa ou fazer negócios grandes, precisa pedir autorização do juiz. Para emergências médicas, pode decidir normalmente." },
+        { "q": "Preciso prestar contas para alguém?", "a": "Sim. Todo ano você deve fazer um relatório mostrando como gastou o dinheiro da pessoa. Esse relatório vai para o Ministério Público e para o juiz. Guarde todos os recibos e comprovantes." },
+        { "q": "Posso usar o dinheiro da pessoa para outros gastos?", "a": "Não. O dinheiro é só para as necessidades da pessoa curatelada: remédios, médico, comida, moradia, cuidadores. Você não pode usar para suas próprias despesas." },
+        { "q": "O que acontece se meu familiar melhorar?", "a": "A curatela pode ser cancelada se a pessoa recuperar a capacidade. Você pode pedir para o juiz fazer uma nova avaliação médica. Se o médico disser que ela melhorou, a curatela é retirada." },
+        { "q": "Posso movimentar a conta bancária da pessoa ou vender imóveis?", "a": "Somente após o processo de curatela chegar ao final. Leve a certidão de curatela no banco. Alguns bancos exigem que você abra uma conta nova em nome da pessoa, mas sob sua responsabilidade. No caso de venda de imóveis é necessário ajuizar ação de alvará judicial após o fim do processo de curatela." },
+        { "q": "Como funciona com aposentadoria e benefícios?", "a": "Você pode receber aposentadoria, pensão e outros benefícios em nome da pessoa. No INSS, apresente a certidão de curatela. Para prova de vida, você pode fazer pela pessoa curatelada." }
+      ]
+    }
+  ]
+}
